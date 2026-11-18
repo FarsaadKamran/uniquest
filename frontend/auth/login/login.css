@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page colors */
+:root {
+    --purple-dark: #2E1B4E;
+    --purple: #5d3b8b;
+    --purple-light: #f3efff;
+    --purple-text: #382453;
+    --purple-muted: #7957a6;
+    --border-color: #e8e0f5;
+    --white: #ffffff;
+}
+
+/* General page styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--purple-light);
+    color: var(--purple-text);
+    min-height: 100vh;
+}
+
+/* Top navigation bar */
+.navbar {
+    height: 63px;
+    background-color: var(--purple-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Logo and name */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.logoIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 34px;
+    background-color: var(--white);
+    color: #d49b00;
+    clip-path: polygon(50% 0%, 95% 15%, 92% 65%, 50% 100%, 8% 65%, 5% 15%);
+    font-size: 30px;
+}
+
+/* Main content */
+.loginPage {
+    min-height: calc(100vh - 63px);
+    padding: 19px 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Welcome heading */
+.loginPage h1 {
+    font-size: 34px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* White login card */
+.loginCard {
+    width: 100%;
+    max-width: 365px;
+    background-color: var(--white);
+    padding: 22px 25px 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(48, 27, 77, 0.12);
+}
+
+/* Card heading */
+.loginCard h2{
+    font-size: 22px;
+    font-weight: 500;
+    margin: 10px;
+    margin-left: 0;
+}
+
+/* Supporting text */
+.subtitle {
+    font-size: 11px;
+    color: var(--purple-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Form groups */
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Input fields */
+.formGroup input {
+    width: 100%;
+    height: 39px;
+    padding: 0 11px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    outline: none;
+    font-size: 11px;
+    color: var(--purple-text);
+}
+
+.formGroup input::placeholder {
+    color: #9383a7;
+}
+
+.formGroup input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 2px rgba(93, 59, 139, 0.1);
+}
+
+/* Password input and toggle */
+.passwordWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.passwordWrapper input {
+    padding-right: 55px;
+}
+
+.togglePassword {
+    position: absolute;
+    right: 10px;
+    border: none;
+    background: none;
+    color: var(--purple-muted);
+    font-size: 10px;
+    cursor: pointer;
+}
+
+/* Remember me and forgot password */
+.formOptions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin: 3px 0 20px;
+    font-size: 10px;
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.rememberMe input {
+    accent-color: var(--purple);
+    cursor: pointer;
+}
+
+.forgotPassword,
+.registerLink a,
+.footer a {
+    color: var(--purple-muted);
+    text-decoration: none;
+}
+
+.forgotPassword {
+    white-space: nowrap;
+}
+
+.forgotPassword:hover,
+.registerLink a:hover,
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Login button */
+.loginButton {
+    width: 100%;
+    height: 39px;
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.loginButton:hover {
+    background-color: var(--purple-dark);
+}
+
+/* Create account text */
+.registerLink {
+    margin-top: 27px;
+    font-size: 10px;
+    color: var(--purple-muted);
+    text-align: center;
+}
+
+.registerLink a {
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    max-width: 365px;
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--purple-muted);
+}
+
+.footer div {
+    display: flex;
+    gap: 18px;
+}
+
+/* Smaller screens */
+@media (max-width: 480px) {
+    .loginPage {
+        padding: 25px 18px;
+    }
+
+    .loginPage h1 {
+        font-size: 29px;
+        margin-bottom: 22px;
+    }
+
+    .loginCard {
+        padding: 22px 20px;
+    }
+
+    .footer {
+        gap: 15px;
+    }
+}
+/* Error message from the backend */
+.formError {
+    background-color: #fdecec;
+    color: #a12626;
+    border: 1px solid #f3c2c2;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+/* Button while a request is in progress */
+.loginButton:disabled,
+.registerButton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Success message */
+.formSuccess {
+    background-color: #e9f7ee;
+    color: #1f6b3a;
+    border: 1px solid #bfe5cc;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}

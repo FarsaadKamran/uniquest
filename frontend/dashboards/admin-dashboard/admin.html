@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dashboard.css">
+    <title>UniQuest | Admin Dashboard</title>
+</head>
+<body data-example-role="Admin">
+    <!-- Top navigation bar -->
+    <header class="navbar">
+        <!-- TODO: link the logo to the home page when it is ready (e.g. href="home.html") -->
+        <a href="#" class="logo" data-placeholder>
+            <span class="logoIcon">♛</span>
+            <span>UniQuest</span>
+        </a>
+
+        <nav class="navLinks">
+            <!-- TODO: link to the Home page -->
+            <a href="#" class="active" data-placeholder>Home</a>
+            <!-- TODO: link to the Discover page -->
+            <a href="#" data-placeholder>Discover</a>
+            <!-- TODO: link to the Leaderboard page -->
+            <a href="#" data-placeholder>Leaderboard</a>
+            <!-- TODO: link to the Shop page -->
+            <a href="#" data-placeholder>Shop</a>
+        </nav>
+
+        <div class="userWrapper">
+            <button type="button" class="userMenu" id="userMenuButton" aria-haspopup="true" aria-expanded="false" aria-controls="userDropdown">
+                <!-- Name, initials and role are filled in by dashboard.js (loadCurrentUser). The text here is only a fallback. -->
+                <span class="avatar" id="userAvatar">AM</span>
+                <span class="userInfo">
+                    <strong id="userName">Alex Morgan</strong>
+                    <span id="userRole">Admin · Maynooth</span>
+                </span>
+                <span class="chevron">⌄</span>
+            </button>
+
+            <!-- Dropdown shown when the user clicks their name (top right) -->
+            <div class="userDropdown" id="userDropdown" hidden>
+                <!-- TODO: link to the profile page -->
+                <a href="#" data-placeholder>Profile</a>
+                <!-- TODO: link to the settings page -->
+                <a href="#" data-placeholder>Settings</a>
+                <!-- TODO: link to the help page -->
+                <a href="#" data-placeholder>Get help</a>
+                <!-- Log out goes back to the login page. TODO: also clear the session/token here once login works -->
+                <a href="/auth/login/" class="logout">Log out</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <h1>Admin Dashboard</h1>
+        <h2>Manage users, modules and university engagement</h2>
+
+        <!-- Action cards -->
+        <section class="cardGrid">
+            <!-- TODO: link to the User Management page -->
+            <a href="#" class="actionCard" data-placeholder>
+                <span class="iconBox">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                </span>
+                <h3>User Management</h3>
+                <p>View and manage registered users</p>
+                <span class="arrowButton">→</span>
+            </a>
+
+            <!-- TODO: link to the Module Management page -->
+            <a href="#" class="actionCard" data-placeholder>
+                <span class="iconBox">
+                    <svg viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"/></svg>
+                </span>
+                <h3>Module Management</h3>
+                <p>Create, edit and delete modules</p>
+                <span class="arrowButton">→</span>
+            </a>
+
+            <!-- TODO: link to the Campus challenges page -->
+            <a href="#" class="actionCard" data-placeholder>
+                <span class="iconBox">
+                    <svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v6a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg>
+                </span>
+                <h3>Campus challenges</h3>
+                <p>Set up university-wide quests</p>
+                <span class="arrowButton">→</span>
+            </a>
+
+            <!-- TODO: link to the Reward Store management page -->
+            <a href="#" class="actionCard" data-placeholder>
+                <span class="iconBox">
+                    <svg viewBox="0 0 24 24"><path d="M3 10h18l-2 10H5z"/><path d="M8 10l4-6 4 6M9 14v3M15 14v3"/></svg>
+                </span>
+                <h3>Reward Store</h3>
+                <p>Manage rewards and coupon stock</p>
+                <span class="arrowButton">→</span>
+            </a>
+        </section>
+
+        <!-- Recent activity -->
+        <h2 class="sectionTitle">Recent admin activity</h2>
+
+        <!-- RECENT ADMIN ACTIVITY (dynamic)
+             This list is EMPTY on purpose: admin.js builds the rows from data.
+             The activity keeps changing, so nothing is typed here by hand.
+             BACKEND: see the instructions at the top of admin.js. -->
+        <section class="listPanel" id="activityList" aria-label="Recent admin activity" aria-live="polite"><p class="listMessage">Loading activity…</p></section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>© 2026 UniQuest · Made for your Maynooth adventure</span>
+
+            <div>
+                <!-- TODO: link to the privacy page -->
+                <a href="#" data-placeholder>Privacy</a>
+                <!-- TODO: link to the help page -->
+                <a href="#" data-placeholder>Get help</a>
+            </div>
+        </footer>
+    </main>
+    <script src="/auth/registration/api.js"></script>
+    <script src="../dashboard.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

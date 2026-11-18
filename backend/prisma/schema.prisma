@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  LECTURER
+  ADMIN
+  COMMITTEE_MEMBER
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  fullName     String
+  displayName  String
+  passwordHash String
+  role         Role     @default(STUDENT)
+  xp           Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  enrollments     ModuleEnrollment[] // applies only to students - what modules they are enrolled in
+  teachingModules ModuleLecturer[] // applies only to lecturers - what modules are they teaching
+}
+
+model Module {
+  id          String   @id @default(uuid())
+  code        String   @unique
+  name        String
+  credits     Int
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  enrollments ModuleEnrollment[] // which students are enrolled in this
+  lecturers   ModuleLecturer[] // which lecturers are teaching this
+}
+
+model ModuleEnrollment {
+  id         String   @id @default(uuid())
+  userId     String
+  moduleId   String
+  enrolledAt DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  module     Module   @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, moduleId])
+}
+
+model ModuleLecturer {
+  id         String @id @default(uuid())
+  lecturerId String
+  moduleId   String
+
+  lecturer User   @relation(fields: [lecturerId], references: [id], onDelete: Cascade)
+  module   Module @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@unique([lecturerId, moduleId])
+}

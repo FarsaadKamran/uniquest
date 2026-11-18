@@ -1,0 +1,1035 @@
+
+/* =====================================
+   MAIN DASHBOARD CONTAINER
+===================================== */
+
+.dashboardContainer {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 28px 5% 25px;
+}
+
+/* =====================================
+   WELCOME SECTION
+===================================== */
+
+.welcomeSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.welcomeSection h1 {
+    font-size: 29px;
+    font-weight: 500;
+}
+
+/* Attendance button */
+.scanButton {
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.scanButton:hover {
+    background-color: var(--purple-dark);
+}
+
+/* =====================================
+   LEVEL AND XP PROGRESS CARD
+===================================== */
+
+.progressCard {
+    background-color: var(--purple-card);
+    border-radius: 17px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(48, 27, 77, 0.04);
+}
+
+/* Level box */
+.levelBox {
+    min-width: 80px;
+    min-height: 88px;
+    background-color: var(--purple);
+    color: var(--white);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.levelLabel {
+    font-size: 9px;
+    font-weight: bold;
+}
+
+.levelNumber {
+    font-size: 39px;
+    font-weight: bold;
+}
+
+.levelRank {
+    font-size: 11px;
+}
+
+/* XP information */
+.progressContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.progressHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.progressHeading h2 {
+    font-size: 16px;
+}
+
+.xpTotal {
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--purple);
+}
+
+/* Progress bar */
+.progressBar {
+    width: 100%;
+    height: 7px;
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progressFill {
+    width: 83.33%;
+    height: 100%;
+    background-color: var(--purple);
+    border-radius: 10px;
+}
+
+.xpMessage {
+    font-size: 11px;
+    color: var(--purple-muted);
+    margin-bottom: 10px;
+}
+
+.completedQuests {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* =====================================
+   DASHBOARD TWO-COLUMN LAYOUT
+===================================== */
+
+.dashboardContent {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+/* Left column */
+.questsSection {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Right column */
+.sidebar {
+    width: 326px;
+    flex-shrink: 0;
+}
+
+/* =====================================
+   SECTION HEADINGS
+===================================== */
+
+.sectionHeading {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.sectionTitleRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.viewLink {
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.viewLink:hover {
+    text-decoration: underline;
+}
+
+/* =====================================
+   QUEST TABS
+===================================== */
+
+.questTabs {
+    display: flex;
+    gap: 7px;
+    margin: 12px 0;
+}
+
+.tabButton {
+    background-color: var(--white);
+    color: var(--purple-muted);
+    border: none;
+    border-radius: 20px;
+    padding: 7px 13px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.tabButton.active {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+.tabButton:hover {
+    opacity: 0.85;
+}
+
+/* =====================================
+   QUEST CARDS
+===================================== */
+
+.questList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.questCard {
+    background-color: var(--white);
+    border: 1px solid var(--purple-border);
+    border-radius: 11px;
+    padding: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    min-height: 177px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(48, 27, 77, 0.03);
+}
+
+/* Quest icon */
+.questIcon {
+    min-width: 36px;
+    height: 36px;
+    background-color: #f7f3fc;
+    border-radius: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--purple);
+    font-size: 22px;
+}
+
+/* Quest information */
+.questDetails {
+    flex: 1;
+    min-width: 0;
+}
+
+.questCategory {
+    font-size: 8px;
+    font-weight: bold;
+    color: var(--purple-muted);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.questDetails h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.questDetails p {
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--purple-muted);
+}
+
+.questDetails .questDeadline {
+    color: var(--purple-text);
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.questDetails .bonus {
+    font-weight: bold;
+}
+
+/* Quest XP and status labels */
+.questLabels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 13px;
+}
+
+.xpBadge,
+.statusBadge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.xpBadge {
+    background-color: #fff4d8;
+    color: #946100;
+}
+
+.statusBadge {
+    background-color: #eee3fb;
+    color: var(--purple);
+}
+
+/* Open assignment button */
+.assignmentButton {
+    align-self: flex-end;
+    flex-shrink: 0;
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 7px;
+    padding: 10px 13px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s ease;
+}
+
+.assignmentButton:hover {
+    background-color: var(--purple-dark);
+}
+
+/* =====================================
+   MY MODULES
+===================================== */
+
+.modulesSection {
+    margin-bottom: 24px;
+}
+
+/* =====================================
+   SCROLLABLE MY MODULES
+===================================== */
+
+.modulesCard {
+    background-color: var(--white);
+    border: 1px solid var(--purple-border);
+    border-radius: 16px;
+    padding: 10px 17px;
+    box-shadow: 0 4px 12px rgba(48, 27, 77, 0.03);
+    max-height: 230px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+
+/* Custom scrollbar */
+.modulesCard::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modulesCard::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.modulesCard::-webkit-scrollbar-thumb {
+    background-color: #c9b8df;
+    border-radius: 10px;
+}
+
+.modulesCard::-webkit-scrollbar-thumb:hover {
+    background-color: var(--purple);
+}
+
+.moduleItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+}
+
+.moduleItem:not(:last-child) {
+    border-bottom: 1px solid var(--purple-border);
+}
+
+.moduleIcon {
+    min-width: 28px;
+    height: 28px;
+    background-color: #f7f3fc;
+    color: var(--purple);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+}
+
+.moduleItem h3 {
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.moduleItem p {
+    font-size: 10px;
+    color: var(--purple-muted);
+}
+
+/* =====================================
+   DISCOVER SECTION
+===================================== */
+
+.discoverCard {
+    background-color: var(--white);
+    border: 1px solid var(--purple-border);
+    border-radius: 16px;
+    padding: 10px 17px;
+    box-shadow: 0 4px 12px rgba(48, 27, 77, 0.03);
+}
+
+.discoverItem {
+    padding: 12px 0;
+}
+
+.discoverItem:not(:last-child) {
+    border-bottom: 1px solid var(--purple-border);
+    margin-bottom: 3px;
+}
+
+/* Discover information */
+.discoverInfo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.discoverIcon {
+    min-width: 28px;
+    height: 28px;
+    background-color: #f7f3fc;
+    border-radius: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--purple);
+    font-size: 17px;
+}
+
+.discoverInfo h3 {
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.discoverInfo p {
+    font-size: 10px;
+    color: var(--purple-muted);
+    line-height: 1.4;
+}
+
+.discoverInfo .eventProgress {
+    margin-top: 3px;
+}
+
+/* Discover buttons */
+.discoverActions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.exploreButton {
+    background-color: #f7f3fc;
+    color: var(--purple);
+    border: none;
+    border-radius: 7px;
+    padding: 8px 11px;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.exploreButton:hover {
+    background-color: var(--purple-card);
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+.dashboardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 0;
+    color: var(--purple-muted);
+    font-size: 11px;
+}
+
+.dashboardFooter div {
+    display: flex;
+    gap: 20px;
+}
+
+.dashboardFooter a {
+    color: var(--purple-muted);
+    text-decoration: none;
+}
+
+.dashboardFooter a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================
+   ATTENDANCE MODAL POPUP
+===================================== */
+
+/* Dark background behind the popup */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(25, 19, 35, 0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+/* Show popup when active */
+.modalOverlay.active {
+    display: flex;
+}
+
+/* White popup container */
+.attendanceModal {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 555px;
+    padding: 18px 12px 13px;
+    border-radius: 13px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Popup heading */
+.attendanceModal h2 {
+    font-size: 16px;
+    color: var(--purple-text);
+    margin-bottom: 10px;
+}
+
+/* Description */
+.modalDescription {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 13px;
+}
+
+/* Close button */
+.modalClose {
+    position: absolute;
+    top: 13px;
+    right: 12px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    background-color: #71349d;
+    color: white;
+    font-size: 21px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalClose:hover {
+    background-color: var(--purple-dark);
+}
+
+/* Form label */
+#attendanceForm label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+/* Class code input */
+#classCode {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #c7b8d7;
+    border-radius: 12px;
+    font-size: 13px;
+    color: var(--purple-text);
+    outline: none;
+    margin-bottom: 9px;
+}
+
+#classCode:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 2px rgba(93, 59, 139, 0.12);
+}
+
+#classCode::placeholder {
+    color: #888;
+}
+
+/* Submit button */
+.submitCode {
+    width: 100%;
+    height: 43px;
+    background-color: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 11px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.submitCode:hover {
+    background-color: var(--purple-dark);
+}
+
+/* Footer text */
+.modalFooter {
+    text-align: center;
+    font-size: 10px;
+    color: #777;
+    margin-top: 15px;
+}
+
+/* Feedback message */
+.attendanceMessage {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+    color: var(--purple);
+}
+
+/* =====================================
+   SUBMIT ASSIGNMENT MODAL
+===================================== */
+
+/* Main popup container */
+.assignmentModal {
+    background-color: var(--white);
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 20px 34px;
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Assignment heading */
+.assignmentHeader {
+    margin-bottom: 28px;
+}
+
+.assignmentModule {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.assignmentHeader h1 {
+    font-size: 27px;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+/* XP and status badges */
+.assignmentBadges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.xpBadge {
+    background-color: #fff3d5;
+    color: #956000;
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.statusBadge {
+    background-color: #eee2fa;
+    color: var(--purple);
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Due dates */
+.assignmentDates {
+    margin-bottom: 32px;
+    padding-left: 5px;
+}
+
+.assignmentDates strong {
+    display: block;
+    color: #35204f;
+    font-size: 14px;
+}
+
+.assignmentDates p {
+    color: var(--purple);
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 0;
+}
+
+/* Instructions */
+
+.assignmentInstructions {
+    margin-bottom: 25px;
+    padding-left: 5px;
+}
+
+.assignmentInstructions h3,
+.assignmentFiles h3,
+#assignmentForm h3 {
+    font-size: 14px;
+    color: #111;
+    margin-bottom: 9px;
+}
+
+.assignmentInstructions p {
+    font-size: 15px;
+    color: #222;
+    line-height: 1.5;
+}
+
+/* Assignment PDF section */
+.assignmentFiles {
+    margin-bottom: 18px;
+    padding: 0 5px;
+}
+
+.pdfFile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    border: 1px solid #dfd2ed;
+    border-radius: 9px;
+    padding: 7px 12px;
+}
+
+.pdfIcon {
+    border: 1.5px solid var(--purple);
+    color: var(--purple);
+    font-size: 9px;
+    font-weight: bold;
+    padding: 5px 4px;
+    border-radius: 3px;
+}
+
+#assignmentFileName {
+    font-size: 14px;
+    color: #222;
+}
+
+#assignmentPdf {
+    margin-left: auto;
+    color: var(--purple);
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#assignmentPdf:hover {
+    text-decoration: underline;
+}
+
+/* Student submission section */
+#assignmentForm {
+    padding: 0 5px;
+}
+
+.fileUpload {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dfd2ed;
+    border-radius: 9px;
+    min-height: 44px;
+    padding: 7px 12px;
+    margin-bottom: 19px;
+}
+
+#assignmentUpload {
+    width: 100%;
+    font-size: 13px;
+    color: #333;
+}
+
+#assignmentUpload::file-selector-button {
+    background-color: white;
+    color: var(--purple);
+    border: 2px solid var(--purple);
+    border-radius: 7px;
+    padding: 3px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#assignmentUpload::file-selector-button:hover {
+    background-color: #f3efff;
+}
+
+/* Submit assignment button */
+.submitAssignment {
+    width: calc(100% + 54px);
+    margin-left: -27px;
+    min-height: 53px;
+    background-color: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submitAssignment:hover {
+    background-color: var(--purple-dark);
+}
+
+/* Submission feedback */
+.submissionMessage {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 12px;
+    color: var(--purple);
+}
+
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 1000px) {
+
+    .navbar {
+        padding: 0 3%;
+    }
+
+    .dashboardContainer {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .dashboardContent {
+        gap: 15px;
+    }
+
+    .sidebar {
+        width: 285px;
+    }
+
+    .questCard {
+        flex-wrap: wrap;
+    }
+
+    .assignmentButton {
+        margin-left: 49px;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        padding: 15px 4%;
+        gap: 15px;
+    }
+
+    .navLinks {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .navLinks a {
+        padding: 8px 10px;
+    }
+
+    .profile {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    .dashboardContent {
+        flex-direction: column;
+    }
+
+    .questsSection,
+    .sidebar {
+        width: 100%;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .modulesSection {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .dashboardContainer {
+        padding: 22px 15px;
+    }
+
+    .welcomeSection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .welcomeSection h1 {
+        font-size: 23px;
+    }
+
+    .progressCard {
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .levelBox {
+        min-width: 65px;
+        min-height: 80px;
+    }
+
+    .levelNumber {
+        font-size: 32px;
+    }
+
+    .progressHeading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .progressHeading h2 {
+        font-size: 13px;
+    }
+
+    .questCard {
+        padding: 13px;
+    }
+
+    .questIcon {
+        min-width: 30px;
+        height: 30px;
+    }
+
+    .questDetails h3 {
+        font-size: 13px;
+    }
+
+    .assignmentButton {
+        margin-left: 43px;
+    }
+
+    .dashboardFooter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Attendance Pop up */
+@media (max-width: 480px) {
+    .attendanceModal {
+        padding: 18px;
+    }
+}
+
+/* Submit assignment Pop up */
+@media (max-width: 600px) {
+
+    .assignmentModal {
+        padding: 20px;
+        max-height: 85vh;
+    }
+
+    .assignmentHeader h1 {
+        font-size: 23px;
+    }
+
+    .assignmentDates {
+        margin-bottom: 22px;
+    }
+
+    .submitAssignment {
+        width: 100%;
+        margin-left: 0;
+    }
+}

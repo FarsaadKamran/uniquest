@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- dashboard.css = shared styles (same file as admin/lecturer). student.css = student-only styles. -->
+    <link rel="stylesheet" href="../dashboard.css">
+    <link rel="stylesheet" href="student-dashboard.css">
+    <title>UniQuest | Student Dashboard</title>
+</head>
+<body data-example-role="Student">
+    <!-- Top navigation bar (same markup as admin.html / lecturer.html) -->
+    <header class="navbar">
+        <!-- TODO: link the logo to the home page -->
+        <a href="#" class="logo" data-placeholder>
+            <span class="logoIcon">♛</span>
+            <span>UniQuest</span>
+        </a>
+
+        <nav class="navLinks">
+            <!-- TODO: link to the Home page -->
+            <a href="#" class="active" data-placeholder>Home</a>
+            <!-- TODO: link to the Discover page -->
+            <a href="#" data-placeholder>Discover</a>
+            <!-- TODO: link to the Leaderboard page -->
+            <a href="#" data-placeholder>Leaderboard</a>
+            <!-- TODO: link to the Shop page -->
+            <a href="#" data-placeholder>Shop</a>
+        </nav>
+
+        <div class="userWrapper">
+            <button type="button" class="userMenu" id="userMenuButton" aria-haspopup="true" aria-expanded="false" aria-controls="userDropdown">
+                <!-- Name, initials and role are filled in by dashboard.js (loadCurrentUser). The text here is only a fallback. -->
+                <span class="avatar" id="userAvatar">AM</span>
+                <span class="userInfo">
+                    <strong id="userName">Alex Morgan</strong>
+                    <span id="userRole">Student · Maynooth</span>
+                </span>
+                <span class="chevron">⌄</span>
+            </button>
+
+            <!-- Dropdown shown when the user clicks their name (top right) -->
+            <div class="userDropdown" id="userDropdown" hidden>
+                <!-- TODO: link to the profile page -->
+                <a href="#" data-placeholder>Profile</a>
+                <!-- TODO: link to the settings page -->
+                <a href="#" data-placeholder>Settings</a>
+                <!-- TODO: link to the help page -->
+                <a href="#" data-placeholder>Get help</a>
+                <!-- Log out goes back to the login page. TODO: also clear the session/token here once login works -->
+                <a href="/auth/login/" class="logout">Log out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==============================
+            MAIN DASHBOARD
+        =============================== -->
+
+    <main class="dashboardContainer">
+        <!-- Welcome heading and attendance button -->
+        <section class="welcomeSection">
+            <!-- The first name is filled in by student.js. "Alex" is only a fallback. -->
+            <h1>Ready for your next quest, <span id="welcomeName">Alex</span>?</h1>
+
+            <!-- Backend: Connect to attendance QR scanning system. -->
+            <button type="button" class="scanButton" id="scanAttendance">▦ Enter class code</button>
+        </section>
+
+        <!-- ==============================
+            LEVEL AND XP PROGRESS
+            Backend: Load level, XP and completed
+            quest count from the student's profile.
+        =============================== -->
+
+        <section class="progressCard">
+
+            <div class="levelBox">
+                <span class="levelLabel">LEVEL</span>
+                <span class="levelNumber">7</span>
+                <span class="levelRank">Adventurer</span>
+            </div>
+
+            <div class="progressContent">
+                <div class="progressHeading">
+                    <h2>Your next level is in reach</h2>
+                    <span class="xpTotal">1,250 / 1,500 XP</span>
+                </div>
+
+                <!-- XP progress bar -->
+                <div class="progressBar">
+                    <div class="progressFill"></div>
+                </div>
+
+                <p class="xpMessage">Just 250 XP to level 8.</p>
+                <p class="completedQuests">18 quests completed</p>
+            </div>
+        </section>
+
+        <!-- ==============================
+            DASHBOARD CONTENT
+            Left: Active quests
+            Right: Modules and Discover
+        =============================== -->
+
+        <div class="dashboardContent">
+            <!-- LEFT COLUMN: ACTIVE QUESTS -->
+            <section class="questsSection">
+                <h2 class="sectionHeading">Active quests</h2>
+
+                <!-- Active and completed quest tabs (handled by student.js) -->
+                <div class="questTabs">
+                    <button type="button" class="tabButton active" data-tab="active">Active quests<span>3</span></button>
+                    <button type="button" class="tabButton" data-tab="completed">Completed<span>18</span></button>
+                </div>
+
+                <!-- Backend: Populate these cards with
+                     the student's assigned quests. -->
+
+                <div class="questList" id="questList">
+
+                    <!-- QUEST 1 -->
+                    <article class="questCard" data-status="active">
+                        <div class="questIcon">♧</div>
+
+                        <div class="questDetails">
+                            <span class="questCategory">STUDY</span>
+                            <h3>Computer Systems — Lab 4</h3>
+                            <p>Complete and submit your CS162 lab report.</p>
+                            <p class="questDeadline">Due: Fri 23 Oct, 17:00</p>
+                            <p class="earlyBird">Early bird cutoff: Wed 21 Oct, 17:00 (closed)</p>
+                            <p class="bonus">Early bird bonus: +50 XP extra (expired)</p>
+
+                            <div class="questLabels">
+                                <span class="xpBadge">Quest: 250 XP</span>
+                                <span class="statusBadge">Not submitted</span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="assignmentButton" data-assignment="0">Open Assignment <span>→</span></button>
+                    </article>
+
+                    <!-- QUEST 2 -->
+                    <article class="questCard" data-status="active">
+                        <div class="questIcon">♧</div>
+
+                        <div class="questDetails">
+                            <span class="questCategory">STUDY</span>
+                            <h3>Software Engineering — Sprint Review</h3>
+                            <p>Submit your team sprint review and peer feedback.</p>
+                            <p class="questDeadline">Due: Sat 24 Oct, 23:59</p>
+                            <p class="earlyBird">Early bird cutoff: Thu 22 Oct, 23:59</p>
+                            <p class="bonus">Early bird bonus: +50 XP extra</p>
+
+                            <div class="questLabels">
+                                <span class="xpBadge">Quest: 200 XP</span>
+                                <span class="statusBadge">Draft saved</span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="assignmentButton" data-assignment="1">Open Assignment <span>→</span></button>
+                    </article>
+
+                    <!-- QUEST 3 -->
+                    <article class="questCard" data-status="active">
+                        <div class="questIcon">♧</div>
+
+                        <div class="questDetails">
+                            <span class="questCategory">STUDY</span>
+                            <h3>Data Structures — Weekly Practice</h3>
+                            <p>Complete the required practice set and submit your answers.</p>
+                            <p class="questDeadline">Due: Sun 25 Oct, 23:59</p>
+                            <p class="earlyBird">Early bird cutoff: Fri 23 Oct, 23:59</p>
+                            <p class="bonus">Early bird bonus: +50 XP extra</p>
+
+                            <div class="questLabels">
+                                <span class="xpBadge">Quest: 150 XP</span>
+                                <span class="statusBadge">In progress</span>
+                            </div>
+                        </div>
+
+                        <button type="button" class="assignmentButton" data-assignment="2">Open Assignment <span>→</span></button>
+                    </article>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN -->
+            <aside class="sidebar">
+
+                <!-- MY MODULES -->
+                <section class="modulesSection">
+                    <div class="sectionTitleRow">
+                        <h2 class="sectionHeading">My modules</h2>
+                        <!-- TODO: link to the My Modules page -->
+                        <a href="#" class="viewLink" data-placeholder>View all →</a>
+                    </div>
+
+                    <!-- Backend: Load modules enrolled by the student. -->
+                    <div class="modulesCard">
+                        <div class="moduleItem">
+                            <span class="moduleIcon">♧</span>
+
+                            <div>
+                                <h3>CS162 - Computer Systems</h3>
+                                <p>1 active quest →</p>
+                            </div>
+                        </div>
+
+                        <div class="moduleItem">
+                            <span class="moduleIcon">♧</span>
+
+                            <div>
+                                <h3>CS171 - Software Engineering</h3>
+                                <p>1 active quest →</p>
+                            </div>
+                        </div>
+
+                        <div class="moduleItem">
+                            <span class="moduleIcon">♧</span>
+
+                            <div>
+                                <h3>CS180 - Data Structures</h3>
+                                <p>1 active quest →</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DISCOVER -->
+                <section class="discoverSection">
+                    <div class="sectionTitleRow">
+                        <h2 class="sectionHeading">Discover</h2>
+                        <!-- TODO: link to the Discover page -->
+                        <a href="#" class="viewLink" data-placeholder>Explore →</a>
+                    </div>
+                    <div class="discoverCard">
+
+                        <!-- JOIN A SOCIETY -->
+                        <article class="discoverItem">
+                            <div class="discoverInfo">
+                                <span class="discoverIcon">♧</span>
+
+                                <div>
+                                    <h3>Join a society</h3>
+                                    <p>Join your first Maynooth society.</p>
+                                </div>
+                            </div>
+
+                            <div class="discoverActions">
+                                <span class="xpBadge">+150 XP</span>
+                                <!-- TODO: link to the societies page, then remove data-placeholder -->
+                                <button type="button" class="exploreButton" data-placeholder>Explore societies →</button>
+                            </div>
+                        </article>
+
+                        <!-- ATTEND A CAMPUS EVENT -->
+                        <article class="discoverItem">
+                            <div class="discoverInfo">
+                                <span class="discoverIcon">⌖</span>
+
+                                <div>
+                                    <h3>Attend a campus event</h3>
+                                    <p>Check in at one university activity this week.</p>
+                                    <p class="eventProgress">0 / 1 activities attended · Ends Sun 25 Oct</p>
+                                </div>
+                            </div>
+
+                            <div class="discoverActions">
+                                <span class="xpBadge">+100 XP</span>
+                                <!-- TODO: link to the campus events page, then remove data-placeholder -->
+                                <button type="button" class="exploreButton" data-placeholder>Explore events →</button>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </aside>
+        </div>
+
+        <!-- Footer (same markup as admin.html / lecturer.html) -->
+        <footer class="footer">
+            <span>© 2026 UniQuest · Made for your Maynooth adventure</span>
+
+            <div>
+                <!-- TODO: link to the privacy page -->
+                <a href="#" data-placeholder>Privacy</a>
+                <!-- TODO: link to the help page -->
+                <a href="#" data-placeholder>Get help</a>
+            </div>
+        </footer>
+    </main>
+
+<!-- =====================================
+     REGISTER ATTENDANCE POPUP
+===================================== -->
+
+<div class="modalOverlay" id="attendanceModal">
+
+    <div class="attendanceModal">
+
+        <!-- Close button -->
+        <button type="button" class="modalClose" id="closeModal" aria-label="Close popup">&times;</button>
+
+        <!-- Modal heading -->
+        <h2>Register attendance</h2>
+        <p class="modalDescription">Enter class code provided by your lecturer to register your attendance.</p>
+
+        <!-- Class code form -->
+        <form id="attendanceForm">
+            <label for="classCode">Class code</label>
+            <input type="text" id="classCode" name="classCode" placeholder="Enter code (e.g. ABC123)" required maxlength="20">
+            <button type="submit" class="submitCode">Submit code</button>
+        </form>
+
+        <p class="modalFooter">Your attendance will be registered once the code is verified.</p>
+
+        <!-- Frontend feedback -->
+        <p id="attendanceMessage" class="attendanceMessage"></p>
+    </div>
+</div>
+
+
+<!-- =====================================
+     SUBMIT ASSIGNMENT MODAL
+===================================== -->
+
+<div class="modalOverlay" id="assignmentModal">
+    <div class="assignmentModal">
+
+        <!-- Close button -->
+        <button type="button" class="modalClose" id="closeAssignmentModal" aria-label="Close popup">&times;</button>
+
+        <!-- Assignment information (filled in by student.js) -->
+        <div class="assignmentHeader">
+            <p class="assignmentModule" id="assignmentModule">CS162 - Computer Systems</p>
+            <h1 id="assignmentTitle">Lab Report 4</h1>
+
+            <div class="assignmentBadges">
+                <span class="xpBadge" id="assignmentXp">250 XP</span>
+                <span class="statusBadge" id="assignmentStatus">Not submitted</span>
+            </div>
+        </div>
+
+        <!-- Due date information -->
+        <div class="assignmentDates">
+            <strong id="assignmentDue">Due: Fri 23 Oct, 17:00</strong>
+            <p id="assignmentEarlyBird">Early bird cutoff: Wed 21 Oct, 17:00 (closed)</p>
+            <strong id="assignmentBonus">Early bird bonus: +50 XP extra (expired)</strong>
+        </div>
+
+        <!-- Instructions -->
+        <div class="assignmentInstructions">
+            <h3>Instructions</h3>
+            <p id="assignmentDescription">Complete the Lab 4 exercises and submit your report as a PDF.</p>
+        </div>
+
+        <!-- Assignment PDF -->
+        <div class="assignmentFiles">
+            <h3>Assignment Files</h3>
+
+            <div class="pdfFile">
+                <span class="pdfIcon">PDF</span>
+                <span id="assignmentFileName">Lab 4 Instruction.pdf</span>
+
+                <!-- href is set by student.js from the assignment's fileUrl -->
+                <a href="#" id="assignmentPdf" target="_blank" rel="noopener">View PDF</a>
+            </div>
+        </div>
+
+        <!-- Student submission -->
+        <form id="assignmentForm">
+            <h3>Your Submission</h3>
+
+            <div class="fileUpload">
+                <input type="file" id="assignmentUpload" accept=".pdf,application/pdf" required>
+            </div>
+
+            <button type="submit" class="submitAssignment">Submit assignment</button>
+        </form>
+
+        <!-- Submission feedback -->
+        <p id="submissionMessage" class="submissionMessage"></p>
+    </div>
+</div>
+
+    <!-- dashboard.js (shared) MUST load before student.js -->
+    <script src="/auth/registration/api.js"></script>
+    <script src="../dashboard.js"></script>
+    <script src="student.js"></script>
+</body>
+</html>

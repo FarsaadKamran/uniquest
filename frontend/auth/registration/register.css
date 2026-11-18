@@ -1,0 +1,255 @@
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* UniQuest colors */
+:root {
+    --purple-dark: #2E1B4E;
+    --purple: #5d3b8b;
+    --purple-light: #f3efff;
+    --purple-text: #382453;
+    --purple-muted: #7957a6;
+    --border-color: #e8e0f5;
+    --white: #ffffff;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--purple-light);
+    color: var(--purple-text);
+    min-height: 100vh;
+}
+
+/* Header */
+.navbar {
+    height: 63px;
+    background-color: var(--purple-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.logoIcon {
+    width: 30px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    color: #d49b00;
+    clip-path: polygon(50% 0%, 95% 15%, 92% 65%, 50% 100%, 8% 65%, 5% 15%);
+    font-size: 30px;
+}
+
+/* Main layout */
+.registerPage {
+    min-height: calc(100vh - 63px);
+    padding: 19px 18px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main heading */
+.registerPage h1 {
+    font-size: 34px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Registration card */
+.registerCard {
+    width: 100%;
+    max-width: 365px;
+    padding: 22px 25px 25px;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(48, 27, 77, 0.12);
+}
+
+/* Card heading */
+.registerCard h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 18px;
+}
+
+/* Form fields */
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 13px;
+}
+
+.formGroup label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Inputs and dropdown */
+.formGroup input,
+.formGroup select {
+    width: 100%;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--white);
+    color: var(--purple-text);
+    font-family: inherit;
+    font-size: 11px;
+    outline: none;
+}
+
+.formGroup input::placeholder {
+    color: #a1aaa5;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 2px rgba(93, 59, 139, 0.1);
+}
+
+/* Helper text */
+.formGroup small {
+    color: var(--purple-muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* Password field */
+.passwordWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.passwordWrapper input {
+    padding-right: 55px;
+}
+
+.togglePassword {
+    position: absolute;
+    right: 10px;
+    border: none;
+    background: none;
+    color: var(--purple-muted);
+    font-size: 10px;
+    cursor: pointer;
+}
+
+/* Terms and conditions */
+.terms {
+    font-size: 10px;
+    color: var(--purple-muted);
+    line-height: 1.7;
+    margin: 17px 0 14px;
+}
+
+.termsLink {
+    color: var(--purple-dark);
+    text-decoration: none;
+}
+
+.termsLink:hover {
+    text-decoration: underline;
+}
+
+/* Create account button */
+.registerButton {
+    width: 100%;
+    height: 34px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--purple);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.registerButton:hover {
+    background-color: var(--purple-dark);
+}
+
+/* Existing account link */
+.loginLink {
+    margin-top: 25px;
+    font-size: 10px;
+    color: var(--purple-muted);
+    text-align: center;
+}
+
+.loginLink a {
+    color: var(--purple-muted);
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+.loginLink a:hover {
+    text-decoration: underline;
+}
+
+
+/* Hide fields that don't apply to the selected account type */
+[hidden] {
+    display: none !important;
+}
+
+
+/* Mobile layout */
+@media (max-width: 480px) {
+    .registerPage {
+        padding: 24px 16px;
+    }
+
+    .registerPage h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .registerCard {
+        padding: 22px 20px;
+    }
+}
+/* Error message from the backend */
+.formError {
+    background-color: #fdecec;
+    color: #a12626;
+    border: 1px solid #f3c2c2;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+/* Button while a request is in progress */
+.loginButton:disabled,
+.registerButton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}

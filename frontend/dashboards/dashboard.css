@@ -1,0 +1,544 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page colors (same as login.css) */
+:root {
+    --purple-dark: #2E1B4E;
+    --purple: #5d3b8b;
+    --purple-light: #f3efff;
+    --purple-text: #382453;
+    --purple-muted: #7957a6;
+    --purple-soft: #e6dcfa;
+    --border-color: #e8e0f5;
+    --white: #ffffff;
+}
+
+html {
+    font-size: clamp(15px, 0.55vw + 9px, 22px);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--purple-light);
+    color: var(--purple-text);
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Top navigation bar */
+.navbar {
+    height: 3.9375rem;
+    background-color: var(--purple-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.875rem;
+    position: relative;
+}
+
+/* Logo and name (same as login.css) */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    font-size: 1.4375rem;
+    font-weight: bold;
+}
+
+.logoIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.875rem;
+    height: 2.125rem;
+    background-color: var(--white);
+    color: #d49b00;
+    clip-path: polygon(50% 0%, 95% 15%, 92% 65%, 50% 100%, 8% 65%, 5% 15%);
+    font-size: 1.875rem;
+}
+
+/* Nav links */
+.navLinks {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.375rem;
+}
+
+.navLinks a {
+    padding: 0.5rem 0.875rem;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    color: #cfc3e6;
+}
+
+.navLinks a:hover {
+    color: var(--white);
+}
+
+.navLinks a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
+/* User chip */
+.userMenu {
+    display: flex;
+    align-items: center;
+    gap: 0.5625rem;
+    padding-left: 1.125rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--white);
+}
+
+.avatar {
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 50%;
+    background-color: var(--purple-soft);
+    color: var(--purple-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.userInfo strong {
+    font-size: 0.75rem;
+}
+
+.userInfo span {
+    font-size: 0.6875rem;
+    color: #cfc3e6;
+}
+
+.chevron {
+    font-size: 0.6875rem;
+    color: #cfc3e6;
+}
+
+/* Main content */
+.dashboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 78rem;
+    margin: 0 auto;
+    padding: 2rem 2rem 1.5rem;
+}
+
+.dashboard h1 {
+    font-size: 2.125rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.dashboard h2.sectionTitle {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Action cards */
+.cardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+}
+
+.actionCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 5.75rem;
+    padding: 0.875rem 1rem;
+    background-color: var(--white);
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.875rem rgba(48, 27, 77, 0.08);
+    transition: box-shadow 0.2s ease;
+}
+
+.actionCard:hover {
+    box-shadow: 0 0.5rem 1.25rem rgba(48, 27, 77, 0.16);
+}
+
+.iconBox {
+    position: absolute;
+    top: 0.875rem;
+    left: 1rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 0.4375rem;
+    background-color: var(--purple-light);
+    color: var(--purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBox svg,
+.listIcon svg {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.actionCard h3 {
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.actionCard p {
+    font-size: 0.75rem;
+    color: var(--purple-muted);
+}
+
+/* Round arrow button */
+.arrowButton {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: #5a1f8a;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+/* Scrollable list panel */
+.listPanel {
+    background-color: var(--white);
+    border-radius: 0.625rem;
+    padding: 0.625rem;
+    flex: 0 1 auto;
+    min-height: 8.5rem;
+    max-height: 34vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    box-shadow: 0 0.25rem 0.875rem rgba(48, 27, 77, 0.08);
+}
+
+.listIcon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.375rem;
+    background-color: var(--purple-light);
+    color: var(--purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Assignment rows (lecturer) */
+.assignmentRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5625rem 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--purple-soft);
+    border-radius: 0.5rem;
+}
+
+.assignmentRow .listIcon {
+    background-color: var(--white);
+}
+
+.rowText {
+    flex: 1;
+}
+
+.rowText strong {
+    display: block;
+    font-size: 0.8125rem;
+    margin-bottom: 0.1875rem;
+}
+
+.rowText span {
+    font-size: 0.6875rem;
+    color: var(--purple-muted);
+}
+
+.rowButton {
+    display: flex;
+    align-items: center;
+    gap: 0.4375rem;
+    padding: 0.375rem 0.625rem;
+    background-color: var(--white);
+    border-radius: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+}
+
+.rowButton .dot {
+    width: 0.875rem;
+    height: 0.875rem;
+    border-radius: 50%;
+    background-color: #5a1f8a;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.625rem;
+}
+
+/* Activity rows (admin) */
+.activityRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activityRow:last-child {
+    border-bottom: none;
+}
+
+.activityRow strong {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: 0.1875rem;
+}
+
+.activityRow span {
+    font-size: 0.6875rem;
+    color: var(--purple-muted);
+}
+
+/* Big bottom button */
+.mainButton {
+    display: block;
+    width: 100%;
+    margin-top: 0.875rem;
+    height: 2.25rem;
+    line-height: 2.25rem;
+    text-align: center;
+    background-color: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.mainButton:hover {
+    background-color: var(--purple-dark);
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--purple-muted);
+}
+
+.footer div {
+    display: flex;
+    gap: 1.125rem;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Smaller screens */
+@media (max-width: 800px) {
+    .navLinks {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .userInfo,
+    .chevron {
+        display: none;
+    }
+
+    .dashboard {
+        padding: 1.375rem 1rem 1.875rem;
+    }
+
+    .dashboard h1 {
+        font-size: 1.8125rem;
+    }
+
+    .cardGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .rowButton {
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+/* ---------- User dropdown ---------- */
+.userWrapper {
+    position: relative;
+}
+
+button.userMenu {
+    background: none;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+button.userMenu:hover .chevron,
+button.userMenu[aria-expanded="true"] .chevron {
+    color: var(--white);
+}
+
+.chevron {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+button.userMenu[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+}
+
+.userDropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 20;
+    min-width: 10rem;
+    padding: 0.375rem;
+    background-color: var(--white);
+    border-radius: 0.625rem;
+    box-shadow: 0 0.5rem 1.25rem rgba(48, 27, 77, 0.22);
+}
+
+.userDropdown[hidden] {
+    display: none;
+}
+
+.userDropdown a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    color: var(--purple-text);
+}
+
+.userDropdown a:hover {
+    background-color: var(--purple-light);
+}
+
+.userDropdown a.logout {
+    margin-top: 0.25rem;
+    border-top: 1px solid var(--border-color);
+    border-radius: 0 0 0.375rem 0.375rem;
+    color: #b3261e;
+}
+
+/* ---------- "Not implemented yet" message ---------- */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translate(-50%, 1rem);
+    padding: 0.625rem 1.125rem;
+    background-color: var(--purple-dark);
+    color: var(--white);
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 30;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* Loading / empty / error text inside the lists */
+.listMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    min-height: 4rem;
+    font-size: 0.8125rem;
+    color: var(--purple-muted);
+    text-align: center;
+}
+
+/* ---------- Scrollbar on the right of the lists (always visible, like the design) ---------- */
+.listPanel::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.listPanel::-webkit-scrollbar-track {
+    background-color: #e4e4e8;
+    border-radius: 0.5rem;
+    margin: 0.25rem 0;
+}
+
+.listPanel::-webkit-scrollbar-thumb {
+    background-color: #9b6fd6;
+    border-radius: 0.5rem;
+}
+
+.listPanel::-webkit-scrollbar-thumb:hover {
+    background-color: var(--purple);
+}
+
+/* Firefox */
+@supports not selector(::-webkit-scrollbar) {
+    .listPanel {
+        scrollbar-width: thin;
+        scrollbar-color: #9b6fd6 #e4e4e8;
+    }
+}

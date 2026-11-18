@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.css">
+    <title>UniQuest | Create an account</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar">
+        <a href="../login/index.html" class="logo">
+            <span class="logoIcon">♛</span>
+            <span>UniQuest</span>
+        </a>
+    </header>
+
+    <!-- Registration page -->
+    <main class="registerPage">
+        <h1>Start your adventure</h1>
+
+        <section class="registerCard">
+            <h2>Create an account</h2>
+
+            <p id="registerError" class="formError" role="alert" hidden></p>
+
+            <form id="registerForm">
+
+                <!-- Account type -->
+                <div class="formGroup">
+                    <label for="accountType">Account type</label>
+
+                    <select id="accountType" name="accountType" required>
+                        <option value="student" selected>Student</option>
+                        <option value="lecturer">Lecturer</option>
+                        <option value="committee">Committee member</option>
+                    </select>
+                </div>
+
+                <!-- Full name -->
+                <div class="formGroup">
+                    <label for="fullName">Full name</label>
+
+                    <input type="text" id="fullName" name="fullName" placeholder="Alex Morgan" required>
+                </div>
+
+                <!-- University email -->
+                <div class="formGroup">
+                    <label for="email">University email</label>
+
+                    <input type="email" id="email" name="email" placeholder="you@mumail.ie" required>
+
+                    <small id="emailHint">Use your @mumail.ie student email.</small>
+                </div>
+
+                <!-- Student only leaderboard name -->
+                <div class="formGroup" id="displayNameGroup">
+                    <label for="displayName">Leaderboard display name</label>
+
+                    <input type="text" id="displayName" name="displayName" placeholder="Alex M." maxlength="20" required>
+
+                    <small>This is the name others will see on the leaderboard.</small>
+                </div>
+
+                <!-- Password -->
+                <div class="formGroup">
+                    <label for="password">Password</label>
+
+                    <div class="passwordWrapper">
+                        <input type="password" id="password" name="password" placeholder="Create a password" minlength="8" required>
+
+                        <button type="button" id="togglePassword" class="togglePassword" aria-label="Show password">Show</button>
+                    </div>
+
+                    <small>Use at least 8 characters.</small>
+                </div>
+
+                <!-- Terms and privacy -->
+                <p class="terms">By creating an account, you agree to our
+                    <a href="#" class="termsLink">Terms of Service</a> and
+                    <a href="#" class="termsLink">Privacy Policy</a>.
+                </p>
+
+                <!-- Submit -->
+                <button type="submit" class="registerButton">Create an account<span aria-hidden="true">→</span></button>
+            </form>
+        </section>
+
+        <!-- Login link -->
+        <p class="loginLink">Already have an account?<a href="../login/index.html">Log in</a></p>
+    </main>
+    <script src="api.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>
