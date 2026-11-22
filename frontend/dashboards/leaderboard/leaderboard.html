@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- dashboard.css = shared styles (same file as every other page). leaderboard.css = leaderboard-only styles. -->
+    <link rel="stylesheet" href="../dashboard.css">
+    <link rel="stylesheet" href="leaderboard.css">
+    <title>UniQuest | Leaderboard</title>
+</head>
+<body>
+    <!-- Top navigation bar (same markup as the dashboards) -->
+    <header class="navbar">
+        <!-- href is set to the right dashboard for the logged-in role by leaderboard.js -->
+        <a href="/dashboards/student-dashboard/student.html" class="logo" id="logoLink">
+            <span class="logoIcon">♛</span>
+            <span>UniQuest</span>
+        </a>
+
+        <nav class="navLinks">
+            <a href="/dashboards/student-dashboard/student.html" id="homeLink">Home</a>
+            <!-- TODO: link to the Discover page -->
+            <a href="#" data-placeholder>Discover</a>
+            <a href="/dashboards/leaderboard/leaderboard.html" class="active">Leaderboard</a>
+            <!-- TODO: link to the Shop page -->
+            <a href="#" data-placeholder>Shop</a>
+        </nav>
+
+        <div class="userWrapper">
+            <button type="button" class="userMenu" id="userMenuButton" aria-haspopup="true" aria-expanded="false" aria-controls="userDropdown">
+                <!-- Name, initials and role are filled in by dashboard.js (loadCurrentUser). The text here is only a fallback. -->
+                <span class="avatar" id="userAvatar">AM</span>
+                <span class="userInfo">
+                    <strong id="userName">Alex Morgan</strong>
+                    <span id="userRole">Student · Maynooth</span>
+                </span>
+                <span class="chevron">⌄</span>
+            </button>
+
+            <div class="userDropdown" id="userDropdown" hidden>
+                <!-- TODO: link to the profile page -->
+                <a href="#" data-placeholder>Profile</a>
+                <!-- TODO: link to the settings page -->
+                <a href="#" data-placeholder>Settings</a>
+                <!-- TODO: link to the help page -->
+                <a href="#" data-placeholder>Get help</a>
+                <a href="/auth/login/" class="logout">Log out</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <h1>Leaderboard</h1>
+        <h2>See who has earned the most XP at Maynooth</h2>
+
+        <!-- Period tabs: leaderboard.js loads /api/leaderboard?period=... when one is clicked -->
+        <div class="periodTabs" id="periodTabs" role="group" aria-label="Leaderboard period">
+            <button type="button" class="periodTab" data-period="today" aria-pressed="false">Today</button>
+            <button type="button" class="periodTab active" data-period="week" aria-pressed="true">This week</button>
+            <button type="button" class="periodTab" data-period="month" aria-pressed="false">This month</button>
+            <button type="button" class="periodTab" data-period="year" aria-pressed="false">This year</button>
+            <button type="button" class="periodTab" data-period="all" aria-pressed="false">All time</button>
+        </div>
+
+        <!-- The logged-in student's own rank (hidden for lecturers/admins, filled in by leaderboard.js) -->
+        <section class="myRank" id="myRank" hidden>
+            <span class="listIcon" id="myRankIcon"></span>
+            <div class="rowText">
+                <strong id="myRankTitle">Your position</strong>
+                <span id="myRankText"></span>
+            </div>
+            <span class="myRankValue" id="myRankValue"></span>
+        </section>
+
+        <!-- LEADERBOARD LIST (dynamic): leaderboard.js builds the rows from /api/leaderboard -->
+        <section class="listPanel leaderboardPanel" id="leaderboardList" aria-label="Leaderboard" aria-live="polite"><p class="listMessage">Loading leaderboard…</p></section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>© 2026 UniQuest · Made for your Maynooth adventure</span>
+
+            <div>
+                <!-- TODO: link to the privacy page -->
+                <a href="#" data-placeholder>Privacy</a>
+                <!-- TODO: link to the help page -->
+                <a href="#" data-placeholder>Get help</a>
+            </div>
+        </footer>
+    </main>
+    <script src="/auth/registration/api.js"></script>
+    <script src="../dashboard.js"></script>
+    <script src="leaderboard.js"></script>
+</body>
+</html>

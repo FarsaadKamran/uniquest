@@ -1,0 +1,133 @@
+/* =====================================================================
+   LEADERBOARD PAGE - only styles that dashboard.css does not already have.
+   Loaded AFTER ../dashboard.css (uses the same colour variables).
+   ===================================================================== */
+
+/* Period tabs (same pill look as the student dashboard tabs) */
+.periodTabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.875rem;
+}
+
+.periodTab {
+    padding: 0.4375rem 0.875rem;
+    background-color: var(--white);
+    color: var(--purple-muted);
+    border: none;
+    border-radius: 1.25rem;
+    font-family: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.periodTab:hover {
+    opacity: 0.85;
+}
+
+.periodTab.active {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+/* "Your position" card */
+.myRank {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.875rem;
+    background-color: var(--white);
+    border-left: 0.25rem solid var(--purple);
+    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 0.875rem rgba(48, 27, 77, 0.08);
+}
+
+.myRank[hidden] {
+    display: none;
+}
+
+.myRank .rowText strong {
+    font-size: 0.875rem;
+}
+
+.myRankValue {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--purple);
+}
+
+/* The list panel on this page is the main content, so it can be taller than on the dashboards */
+.leaderboardPanel {
+    min-height: 12rem;
+    max-height: 58vh;
+}
+
+/* One row per student */
+.leaderRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.leaderRow:last-child {
+    border-bottom: none;
+}
+
+.leaderRow.isMe {
+    background-color: var(--purple-soft);
+    border-radius: 0.5rem;
+    border-bottom-color: transparent;
+}
+
+.rankBadge {
+    flex-shrink: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background-color: var(--purple-light);
+    color: var(--purple-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+/* Gold / silver / bronze for the top three (gold matches the logo colour) */
+.rankBadge.rank1 { background-color: #d49b00; color: var(--white); }
+.rankBadge.rank2 { background-color: #9a9aa5; color: var(--white); }
+.rankBadge.rank3 { background-color: #b0703a; color: var(--white); }
+
+.leaderRow .rowText strong {
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+}
+
+.youTag {
+    margin-left: 0.5rem;
+    padding: 0.125rem 0.4375rem;
+    background-color: var(--purple);
+    color: var(--white);
+    border-radius: 1rem;
+    font-size: 0.625rem;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+.xpValue {
+    font-size: 0.8125rem;
+    font-weight: bold;
+    color: var(--purple);
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .leaderboardPanel {
+        max-height: 62vh;
+    }
+}

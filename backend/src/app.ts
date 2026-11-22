@@ -15,16 +15,22 @@ import { ModuleRepository } from './repositories/moduleRepository';
 import { moduleRoutes } from './routes/moduleRoutes';
 import { ModuleService } from './services/moduleService';
 
+import { LeaderboardRepository } from './repositories/leaderboardRepository';
+import { leaderboardRoutes } from './routes/leaderboardRoutes';
+import { LeaderboardService } from './services/leaderboardService';
+
 export interface AppDeps {
   userRepo: UserRepository;
   moduleRepo: ModuleRepository;
+  leaderboardRepo: LeaderboardRepository;
   config: AppConfig;
 }
 
-export function createApp({ userRepo, config, moduleRepo }: AppDeps): Express {
+export function createApp({ userRepo, config, moduleRepo, leaderboardRepo }: AppDeps): Express {
   const app = express();
   const auth = new AuthService(userRepo, config);
   const modules = new ModuleService(moduleRepo);
+  const leaderboard = new LeaderboardService(leaderboardRepo);
 
   app.disable('x-powered-by');
   app.use(
@@ -52,6 +58,7 @@ export function createApp({ userRepo, config, moduleRepo }: AppDeps): Express {
   app.use('/api/auth', authRoutes(auth, config));
   app.use('/api/users', userRoutes(auth));
   app.use('/api/modules', moduleRoutes(modules, auth));
+  app.use('/api/leaderboard', leaderboardRoutes(leaderboard, auth));
 
   app.use((_req, _res, next) => next(new AppError(404, 'Route not found', 'NOT_FOUND')));
   app.use(errorHandler);

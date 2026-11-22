@@ -35,3 +35,31 @@ export interface AuthContext {
   userId: string;
   role: Role;
 }
+
+// ---------- Leaderboard ----------
+export const LEADERBOARD_PERIODS = ['today', 'week', 'month', 'year', 'all'] as const;
+export type LeaderboardPeriod = (typeof LEADERBOARD_PERIODS)[number];
+
+export const isLeaderboardPeriod = (value: unknown): value is LeaderboardPeriod =>
+  typeof value === 'string' && (LEADERBOARD_PERIODS as readonly string[]).includes(value);
+
+// Raw xp total for one user in a period (repository output, not ranked yet)
+export interface XpTotal {
+  userId: string;
+  displayName: string;
+  xp: number;
+}
+
+export interface LeaderboardEntry extends XpTotal {
+  rank: number; // ties share a rank (1, 2, 2, 4 ...)
+}
+
+export interface LeaderboardResult {
+  period: LeaderboardPeriod;
+  since: string | null; // start of the period (ISO), null for all time
+  entries: LeaderboardEntry[];
+  // The person asking. null if their role is not on the leaderboard (lecturers/admins).
+  // rank is null when they have 0 xp in this period.
+  me: { rank: number | null; xp: number } | null;
+}
+

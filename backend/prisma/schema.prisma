@@ -27,6 +27,7 @@ model User {
 
   enrollments     ModuleEnrollment[] // applies only to students - what modules they are enrolled in
   teachingModules ModuleLecturer[] // applies only to lecturers - what modules are they teaching
+  xpEvents        XpEvent[] // every time this user earned XP (used by the leaderboard for today/week/month/year)
 }
 
 model Module {
@@ -63,4 +64,19 @@ model ModuleLecturer {
   module   Module @relation(fields: [moduleId], references: [id], onDelete: Cascade)
 
   @@unique([lecturerId, moduleId])
+}
+
+// One row every time a user EARNS xp. User.xp stays the all-time total,
+// this table lets the leaderboard work out "today / this week / this month / this year".
+model XpEvent {
+  id        String   @id @default(uuid())
+  userId    String
+  amount    Int // always positive (xp earned)
+  reason    String? // e.g. "Quest: Lab 4 Report", "Attendance"
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([userId, createdAt])
 }
